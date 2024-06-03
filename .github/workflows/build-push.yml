@@ -1,4 +1,4 @@
-##updated workflow1.1
+##updated workflow1.2
 name: Deploy to ECR
 #updated V0.1
 on:
