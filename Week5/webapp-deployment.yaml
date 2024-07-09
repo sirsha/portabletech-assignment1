@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  namespace: webapp-pod
+  labels:
+    name: webapp
+    app: employees
+spec:
+  replicas: 3  # You can adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+      annotations:
+        custom.dbport: "3306"  # Set the DBPORT value as an annotation
+    spec:
+      containers:
+      - name: webapp
+        image: 809228282836.dkr.ecr.us-east-1.amazonaws.com/webapp
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DBPWD
+          value: password
+        - name: DBHOST
+          value: "mysql-service.mysql-pod.svc.cluster.local"
+        - name: DBPORT
+          value: "3306"
