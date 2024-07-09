@@ -39,7 +39,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: mysql
-        IMAGE_TAG: latest
+        IMAGE_TAG: latestt
       run: |
         ls -ltra
         # Docker build command
