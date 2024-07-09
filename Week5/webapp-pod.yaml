@@ -1,0 +1,19 @@
+# web-app-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-app
+  namespace: webapp-pod
+spec:
+  containers:
+  - name: web-app
+    image: 809228282836.dkr.ecr.us-east-1.amazonaws.com/webapp
+    ports:
+    - containerPort: 8080
+    env:
+    - name: DBPWD
+      value: password
+    - name: DBHOST
+      value: "mysql-service.mysql-pod.svc.cluster.local"
+    - name: DBPORT
+      value: "3306"
